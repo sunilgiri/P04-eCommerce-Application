@@ -57,12 +57,12 @@ public class UserController {
         user.setCart(cart);
         if (createUserRequest.getPassword().length() < 6 ||
                 !createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())) {
-            logger.error("Error cannot create user. Password validation failed for {}", createUserRequest.getUsername());
+            logger.error("CreateUser:Fail Error cannot create user. Password validation failed for {}", createUserRequest.getUsername());
             return ResponseEntity.badRequest().build();
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        logger.info("User creation successful for {}", createUserRequest.getUsername());
+        logger.info("CreateUser:Success User creation successful for {}", createUserRequest.getUsername());
         return ResponseEntity.ok(user);
     }
 

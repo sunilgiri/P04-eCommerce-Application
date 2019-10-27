@@ -28,19 +28,19 @@ public class CartRepositoryTests {
     @Before
     public void setUp() {
 
+
+    }
+
+    @Test
+    public void findByUser() {
+
         Cart cart = new Cart();
         User user = getUser();
         cartRepository.save(cart);
         user.setCart(cart);
         userRepository.save(user);
-    }
-
-    @Test
-    public void findByUser() {
-        User usr = userRepository.findByUsername("Krishnan");
-        //Cart cart = cartRepository.findByUser(usr);
-        //assertNotNull(cart);
-        //assertEquals(Long.valueOf(1l),cart.getId());
+        assertNotNull(cart);
+        assertEquals(Long.valueOf(1l), cart.getId());
     }
 
     private User getUser() {
